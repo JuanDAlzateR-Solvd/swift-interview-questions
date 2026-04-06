@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-interview-questions}",
+            "name": "Debug swift-interview-questions",
+            "target": "swift-interview-questions",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug swift-interview-questions"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-interview-questions}",
+            "name": "Release swift-interview-questions",
+            "target": "swift-interview-questions",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release swift-interview-questions"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-interview-questions}",
+            "name": "Debug SwiftInterviewQuestions",
+            "target": "SwiftInterviewQuestions",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug SwiftInterviewQuestions"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-interview-questions}",
+            "name": "Release SwiftInterviewQuestions",
+            "target": "SwiftInterviewQuestions",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release SwiftInterviewQuestions"
+        }
+    ]
+}
