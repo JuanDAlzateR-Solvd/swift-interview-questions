@@ -35,7 +35,7 @@ func printRectangleCorners(_ rect: CGRect) {
     let topLeft: (r: Int, c: Int) = (Int(rect.minY), Int(rect.minX))
     let bottomRight: (r: Int, c: Int) = (Int(rect.maxY), Int(rect.maxX))
 
-    print("Top-left: (\(topLeft.r), \(topLeft.c))   Bottom-right: (\(bottomRight.r), \(bottomRight.c))")
+    print("Top-left: (\(topLeft.r), \(topLeft.c))   Bottom-right: (\(bottomRight.r - 1), \(bottomRight.c - 1))")
 }
 
 func complement(of matrix: [[Int]]) -> [[Int]] {
@@ -81,6 +81,50 @@ func findRectanglesEfficiently(in matrix: [[Int]]) -> [CGRect] {
         }
     }
 
+    return rectangles
+}
+
+// More robust solution when rectangles are not guaranteed not to be adjacent
+//It could be improven
+func findRectanglesRobust(in matrix: inout [[Int]]) -> [CGRect] {
+    var rectangles: [CGRect] = []
+
+    let rowCount = matrix.count
+    let columnCount = matrix.first?.count ?? 0
+
+    for row in 0..<rowCount {
+        for column in 0..<columnCount {
+            guard matrix[row][column] == 1 else { continue }
+
+            let hasOneAbove = row > 0 && matrix[row - 1][column] == 1
+            let hasOneOnLeft = column > 0 && matrix[row][column - 1] == 1
+
+            guard !hasOneAbove && !hasOneOnLeft else { continue }
+
+            var width = 0
+            while column + width < columnCount && matrix[row][column + width] == 1 {
+                width += 1
+            }
+
+            var height = 0
+            while row + height < rowCount && matrix[row + height][column] == 1 {
+                height += 1
+            }
+
+            var diagonal: Int = 0
+            while column + diagonal < columnCount && row + diagonal < rowCount  && matrix[row + diagonal][column + diagonal] == 1 {
+                diagonal += 1
+            }
+
+            width = min(width, diagonal)
+            height = min(height, diagonal)
+
+            rectangles.append(CGRect(x: column, y: row, width: width, height: height))
+            clearRectangle(in: &matrix, startRow: row, startColumn: column, height: height, width: width)      
+        }
+               
+    }
+    
     return rectangles
 }
 
