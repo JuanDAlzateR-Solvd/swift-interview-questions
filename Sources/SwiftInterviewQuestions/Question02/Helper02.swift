@@ -29,6 +29,7 @@ func clearRectangle(
             matrix[row][column] = 0
         }
     }
+    // print("cleared rectangle from (\(startRow), \(startColumn)) to (\(endRow - 1), \(endColumn - 1))")
 }
 
 func printRectangleCorners(_ rect: CGRect) {
@@ -111,13 +112,15 @@ func findRectanglesRobust(in matrix: inout [[Int]]) -> [CGRect] {
                 height += 1
             }
 
-            var diagonal: Int = 0
-            while column + diagonal < columnCount && row + diagonal < rowCount  && matrix[row + diagonal][column + diagonal] == 1 {
-                diagonal += 1
-            }
+            var diagonalX: Int = 0
+            var diagonalY: Int = 0
+            var coordinates: [MatrixCoordinate] = []     
+            repeat {
+                (diagonalX, diagonalY) = calculateNext(width: width, height: height, x: diagonalX, y: diagonalY, coordinates: &coordinates)
+            } while ((diagonalX != 0 || diagonalY != 0)  && matrix[row + diagonalX][column + diagonalY] == 1)
 
-            width = min(width, diagonal)
-            height = min(height, diagonal)
+            // width = min(width, diagonal)
+            // height = min(height, diagonal)
 
             rectangles.append(CGRect(x: column, y: row, width: width, height: height))
             clearRectangle(in: &matrix, startRow: row, startColumn: column, height: height, width: width)      
@@ -127,4 +130,56 @@ func findRectanglesRobust(in matrix: inout [[Int]]) -> [CGRect] {
     
     return rectangles
 }
+
+func calculateNext(width: Int, height: Int, x: Int, y: Int, coordinates: inout [MatrixCoordinate]) -> (x: Int, y: Int) {
+    let nextX = (x + 1)%width
+    let nextY = (y + 1)%height
+    //Store frontier coordinates
+    if (nextX==0 || nextY==0)  {
+        coordinates.append(MatrixCoordinate(row: y, column: x))        
+    }
+    return (nextX, nextY)
+}
+
+//new aproach: travel to the frontier of the polygon and store the coordinates of the corners. (to implement)
+
+func findRectanglesFrontier(in matrix: inout [[Int]]) -> [CGRect] {
+    var rectangles: [CGRect] = []
+
+    let rowCount = matrix.count
+    let columnCount = matrix.first?.count ?? 0
+
+    for row in 0..<rowCount {
+        for column in 0..<columnCount {
+            guard matrix[row][column] == 1 else { continue }
+
+            let hasOneAbove = row > 0 && matrix[row - 1][column] == 1
+            let hasOneOnLeft = column > 0 && matrix[row][column - 1] == 1
+
+            guard !hasOneAbove && !hasOneOnLeft else { continue }
+
+            var frontierMatrix = Matrix(matrix: matrix, size: MatrixCoordinate(row: matrix.count, column: matrix.first?.count ?? 0))
+
+            var corners: [MatrixCoordinate] = frontierMatrix.travelFrontier(from: MatrixCoordinate(row: row, column: column))
+
+            for corner in corners {
+                // print("Corner at (\(corner.row), \(corner.column))")
+            }
+
+            var maxX = corners.map { $0.column }.max() ?? 0
+            var maxY = corners.map { $0.row }.max() ?? 0
+
+            let width = maxX - column + 1
+            let height = maxY - row + 1
+            // print("Starting at (\(row), \(column)) with width: \(width) and height: \(height)")
+            rectangles.append(CGRect(x: column, y: row, width: width, height: height))
+            clearRectangle(in: &matrix, startRow: row, startColumn: column, height: height, width: width)      
+        }
+               
+    }
+    
+    return rectangles
+}
+
+
 
