@@ -17,7 +17,7 @@ enum Question02 {
         var rectangles = findRectanglesEfficiently(in: comp)  
 
         for point in rectangles {
-            printRectangleCorners(point)
+            printRectangleCorners(point) 
         }
 
         // print("  ")
