@@ -4,6 +4,6 @@
 @main
 struct SwiftInterviewQuestions {
     static func main() {
-        Question02.run()
+        Question01.run()
     }
 }

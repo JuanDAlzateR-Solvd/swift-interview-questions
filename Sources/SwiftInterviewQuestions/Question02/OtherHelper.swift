@@ -1,8 +1,6 @@
 import Foundation
 
-
-
-struct MatrixCoordinate: CustomStringConvertible {
+struct MatrixCoordinate: CustomStringConvertible, Hashable {
     let row: Int
     let column: Int
 
@@ -11,220 +9,150 @@ struct MatrixCoordinate: CustomStringConvertible {
     }
 }
 
-struct MatrixRectangle: CustomStringConvertible {
-    let topLeft: MatrixCoordinate
-    let bottomRight: MatrixCoordinate
+struct Matrix {
+    let matrix: [[Int]]
+    let size: MatrixCoordinate  
 
-    var width: Int {
-        bottomRight.column - topLeft.column + 1
+    func travelRight(from coordinate: MatrixCoordinate) -> MatrixCoordinate {
+        var deltaX = 0    
+        let row = coordinate.row
+        let column = coordinate.column  
+        let columnSize = size.column
+
+        while column + deltaX < columnSize && matrix[row][column + deltaX] == 1 {
+                    deltaX += 1
+                }
+
+        return MatrixCoordinate(row: row, column: column + deltaX - 1)
+    }
+    
+    func travelLeft(from coordinate: MatrixCoordinate) -> MatrixCoordinate {
+        var deltaX = 0    
+        let row = coordinate.row
+        let column = coordinate.column  
+        
+        while column + deltaX >= 0 && matrix[row][column + deltaX] == 1 {
+                    deltaX -= 1
+                }
+
+        return MatrixCoordinate(row: row , column: column + deltaX + 1)
+    
     }
 
-    var height: Int {
-        bottomRight.row - topLeft.row + 1
+    func travelDown(from coordinate: MatrixCoordinate) -> MatrixCoordinate {
+        var deltaY = 0    
+        let row = coordinate.row
+        let column = coordinate.column  
+        let rowSize = size.row
+
+        while row + deltaY < rowSize && matrix[row + deltaY][column] == 1 {
+                    deltaY += 1
+                }
+
+        return MatrixCoordinate(row: row + deltaY - 1, column: column)
     }
 
-    var cgRect: CGRect {
-        CGRect(
-            x: topLeft.column,
-            y: topLeft.row,
-            width: width,
-            height: height
-        )
+    func travelUp(from coordinate: MatrixCoordinate) -> MatrixCoordinate {
+        var deltaY = 0    
+        let row = coordinate.row
+        let column = coordinate.column  
+        
+        while row + deltaY >= 0 && matrix[row + deltaY][column] == 1 {
+                    deltaY -= 1
+                }
+
+        return MatrixCoordinate(row: row + deltaY + 1, column: column)
+    
     }
 
-    var description: String {
-        "topLeft: \(topLeft), bottomRight: \(bottomRight)"
-    }
-}
-
-
-
-func columnSums(in matrix: [[Int]]) -> [Int] {
-    guard let firstRow = matrix.first else { return [] }
-
-    var sums = Array(repeating: 0, count: firstRow.count)
-
-    for row in matrix {
-        for (index, value) in row.enumerated() {
-            sums[index] += value
+    func travelStraight(from coordinate: MatrixCoordinate, direction: String) -> MatrixCoordinate {
+        switch direction {
+        case "right":
+            return travelRight(from: coordinate)
+        case "left":
+            return travelLeft(from: coordinate)
+        case "down":
+            return travelDown(from: coordinate)
+        case "up":
+            return travelUp(from: coordinate)
+        default:
+            fatalError("Invalid direction")
         }
     }
 
-    return sums
-}
-
-func rowSums(in matrix: [[Int]]) -> [Int] {
-    matrix.map { $0.reduce(0, +) }
-}
-
-func firstIndex(
-    in array: [Int],
-    startingAt startIndex: Int,
-    where predicate: (Int) -> Bool
-) -> Int? {
-    guard startIndex >= 0, startIndex < array.count else { return nil }
-    return array[startIndex...].firstIndex(where: predicate)
-}
-
-func lastIndex(
-    in array: [Int],
-    startingAt startIndex: Int,
-    where predicate: (Int) -> Bool
-) -> Int? {
-    guard startIndex >= 0, startIndex < array.count else { return nil }
-    return array[startIndex...].lastIndex(where: predicate)
-}
-
-func firstNonZeroIndex(in array: [Int], startingAt startIndex: Int = 0) -> Int? {
-    firstIndex(in: array, startingAt: startIndex) { $0 != 0 }
-}
-
-func firstZeroIndex(in array: [Int], startingAt startIndex: Int = 0) -> Int? {
-    firstIndex(in: array, startingAt: startIndex) { $0 == 0 }
-}
-
-func firstOneIndex(in array: [Int], startingAt startIndex: Int = 0) -> Int? {
-    firstIndex(in: array, startingAt: startIndex) { $0 == 1 }
-}
-
-func lastOneIndex(in array: [Int], startingAt startIndex: Int = 0) -> Int? {
-    lastIndex(in: array, startingAt: startIndex) { $0 == 1 }
-}
-
-func printMatrixWithSums(_ matrix: [[Int]]) {
-    print("Matrix with row and column sums")
-
-    for row in matrix {
-        let content = row.map { "\($0)" }.joined(separator: "\t")
-        let rowSum = row.reduce(0, +)
-        print("[\(content)] : \(rowSum)")
+    func travel(from coordinate: MatrixCoordinate, direction lastMoveDirection:  inout String) -> MatrixCoordinate {
+        let newDirection = calculateNewDirection(from: coordinate, lastDirection: lastMoveDirection)      
+        let newCoordinate = travelStraight(from: coordinate, direction: newDirection)
+        lastMoveDirection = newDirection
+        return newCoordinate
     }
 
-    let sums = columnSums(in: matrix)
-    let separator = " " + sums.map { _ in "-" }.joined(separator: "\t") + " "
-    print(separator)
-
-    let sumsLine = sums.map { "\($0)" }.joined(separator: "\t")
-    print("[\(sumsLine)] : \(sums.reduce(0, +))")
-}
-
-func boundingRectangle(in matrix: [[Int]]) -> MatrixRectangle? {
-    let columns = columnSums(in: matrix)
-    let rows = rowSums(in: matrix)
-
-    guard let leftColumn = firstNonZeroIndex(in: columns),
-          let topRow = firstNonZeroIndex(in: rows)
-    else {
-        return nil
+    func calculateNewDirection(from coordinate: MatrixCoordinate, lastDirection direction: String) -> String {     
+        switch direction {
+        case "right":
+            return canTravelDown(from: coordinate) ? "down" : "up"
+        case "down":
+            return canTravelLeft(from: coordinate) ? "left" : "right"
+        case "left":
+            return canTravelUp(from: coordinate) ? "up" : "down"
+        case "up":
+            return canTravelRight(from: coordinate) ? "right" : "left"
+        default:
+            fatalError("Invalid direction")
+        }
     }
 
-    let remainingColumns = Array(columns[leftColumn...])
-    let remainingRows = Array(rows[topRow...])
-
-    let firstZeroColumnOffset = firstZeroIndex(in: remainingColumns) ?? remainingColumns.count
-    let firstZeroRowOffset = firstZeroIndex(in: remainingRows) ?? remainingRows.count
-
-    let rightColumn = leftColumn + firstZeroColumnOffset - 1
-    let bottomRow = topRow + firstZeroRowOffset - 1
-
-    return MatrixRectangle(
-        topLeft: MatrixCoordinate(row: topRow, column: leftColumn),
-        bottomRight: MatrixCoordinate(row: bottomRow, column: rightColumn)
-    )
-}
-
-func submatrix(
-    of matrix: [[Int]],
-    fromRow startRow: Int,
-    fromColumn startColumn: Int
-) -> [[Int]] {
-    guard startRow >= 0,
-          startColumn >= 0,
-          startRow < matrix.count,
-          startColumn < (matrix.first?.count ?? 0)
-    else {
-        return []
+    func canTravelLeft(from coordinate: MatrixCoordinate) -> Bool {
+        let column = coordinate.column - 1
+        if column < 0 {
+            return false
+        } else {
+            return matrix[coordinate.row][column] == 1
+        }
     }
 
-    return matrix[startRow...].map { Array($0[startColumn...]) }
-}
-
-func contains(_ coordinate: MatrixCoordinate, in matrix: [[Int]]) -> Bool {
-    coordinate.row >= 0 &&
-    coordinate.column >= 0 &&
-    coordinate.row < matrix.count &&
-    coordinate.column < (matrix.first?.count ?? 0)
-}
-
-func firstFilledCoordinate(in matrix: [[Int]]) -> MatrixCoordinate? {
-    let columnTotals = columnSums(in: matrix)
-    let rowTotals = rowSums(in: matrix)
-
-    guard let column = firstNonZeroIndex(in: columnTotals),
-          let row = firstNonZeroIndex(in: rowTotals)
-    else {
-        return nil
+    func canTravelRight(from coordinate: MatrixCoordinate) -> Bool {
+        let column = coordinate.column + 1
+        if column >= size.column {
+            return false
+        } else {
+            return matrix[coordinate.row][column] == 1
+        }
     }
 
-    return MatrixCoordinate(row: row, column: column)
-}
-
-func column(at index: Int, in matrix: [[Int]]) -> [Int] {
-    matrix.map { $0[index] }
-}
-
-func rectangleBottomRight(
-    in matrix: [[Int]],
-    startingAt start: MatrixCoordinate
-) -> MatrixCoordinate? {
-    guard contains(start, in: matrix) else { return nil }
-
-    let row = matrix[start.row]
-    let columnValues = column(at: start.column, in: matrix)
-
-    let rightBoundary = (firstZeroIndex(in: row, startingAt: start.column).map { $0 - 1 })
-        ?? lastOneIndex(in: row, startingAt: start.column)
-
-    let bottomBoundary = (firstZeroIndex(in: columnValues, startingAt: start.row).map { $0 - 1 })
-        ?? lastOneIndex(in: columnValues, startingAt: start.row)
-
-    guard let bottomRow = bottomBoundary,
-          let rightColumn = rightBoundary
-    else {
-        return nil
+    func canTravelUp(from coordinate: MatrixCoordinate) -> Bool {
+        let row = coordinate.row - 1
+        if row < 0 {
+            return false
+        } else {
+            return matrix[row][coordinate.column] == 1
+        }
     }
 
-    return MatrixCoordinate(row: bottomRow, column: rightColumn)
-}
-
-func clearRectangle(
-    in matrix: inout [[Int]],
-    from topLeft: MatrixCoordinate,
-    to bottomRight: MatrixCoordinate
-) {
-    let height = bottomRight.row - topLeft.row + 1
-    let width = bottomRight.column - topLeft.column + 1
-
-    clearRectangle(
-        in: &matrix,
-        startRow: topLeft.row,
-        startColumn: topLeft.column,
-        height: height,
-        width: width
-    )
-}
-
-func findRectanglesByRemoval(in matrix: [[Int]]) -> [MatrixRectangle] {
-    var workingMatrix = complement(of: matrix)
-    var rectangles: [MatrixRectangle] = []
-
-    while let start = firstFilledCoordinate(in: workingMatrix),
-          let end = rectangleBottomRight(in: workingMatrix, startingAt: start) {
-        let rectangle = MatrixRectangle(topLeft: start, bottomRight: end)
-        rectangles.append(rectangle)
-        clearRectangle(in: &workingMatrix, from: start, to: end)
+    func canTravelDown(from coordinate: MatrixCoordinate) -> Bool {
+        let row = coordinate.row + 1
+        if row >= size.row {
+            return false
+        } else {
+            return matrix[row][coordinate.column] == 1
+        }
     }
 
-    return rectangles
-}
+    func travelFrontier(from coordinate: MatrixCoordinate) -> [MatrixCoordinate] {
+        var frontierCoordinates: [MatrixCoordinate] = [coordinate]
 
+        var nextCoordinate = travelDown(from: coordinate)        
+        var lastMoveDirection: String = "down"
+        
+        var turn = 0
+        while !frontierCoordinates.contains(nextCoordinate) && turn < 100 {            
+            frontierCoordinates.append(nextCoordinate)
+            nextCoordinate = travel(from: nextCoordinate, direction: &lastMoveDirection)           
+            // print("Next coordinate: \(nextCoordinate), last move direction: \(lastMoveDirection)")
+            turn += 1
+        }
+
+        return frontierCoordinates
+    }
+
+}
