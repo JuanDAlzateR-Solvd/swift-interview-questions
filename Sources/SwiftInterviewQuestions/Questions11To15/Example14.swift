@@ -1,4 +1,4 @@
-enum Question14 {
+enum Question14: InterviewQuestion {
     static func run() {
         let numbers = Array(1...100)
 

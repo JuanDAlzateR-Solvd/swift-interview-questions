@@ -1,4 +1,4 @@
-enum Question05{
+enum Question05: InterviewQuestion{
     static func run() {
         let test1: [String: [String: [String: Int]]] = [
             "2021-12-23": [

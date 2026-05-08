@@ -1,0 +1,709 @@
+{
+  "channel": {
+    "id": "user-100",
+    "name": "User 100",
+    "subscribers": [
+      {
+        "id": "user-1"
+      },
+      {
+        "id": "user-2"
+      },
+      {
+        "id": "user-3"
+      }
+    ],
+    "videos": [
+      {
+        "id": "video-1",
+        "name": "Current Video",
+        "duration": "7:35",
+        "props": {
+          "video": {
+            "url": "https://www.youtube.com/watch?v=1",
+            "thumbnail": "https://i.ytimg.com/vi/1/hqdefault.jpg",
+            "quality": [
+              "1080p",
+              "720p",
+              "480p",
+              "360p",
+              "240p",
+              "144p"
+            ]
+          },
+          "audio": {
+            "codec": "AAC",
+            "bitrate": "128kbps"
+          }
+        },
+        "stats": {
+          "views": [
+            {
+              "user": {
+                "id": "user-1"
+              },
+              "timestamp": "2018-01-01T00:00:00Z",
+              "window": "11"
+            },
+            {
+              "user": {
+                "id": "user-2"
+              },
+              "timestamp": "2018-01-01T00:00:00Z",
+              "window": "35"
+            },
+            {
+              "user": {
+                "id": "user-9"
+              },
+              "timestamp": "2018-01-01T00:00:00Z",
+              "window": "5"
+            },
+            {
+              "user": {
+                "id": "user-9"
+              },
+              "timestamp": "2018-01-01T00:00:00Z",
+              "window": "19"
+            },
+            {
+              "user": {
+                "id": "user-1"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "11-117"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "30-67"
+            }
+          ],
+          "rating": {
+            "likes": [
+              {
+                "user": {
+                  "id": "user-1"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-2"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-3"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              }
+            ],
+            "dislikes": [
+              {
+                "user": {
+                  "id": "user-4"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              }
+            ]
+          },
+          "comments": [
+            {
+              "id": "1",
+              "author": "User 1 (@user-1)",
+              "content": "I am the 1st!",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-2"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            },
+            {
+              "id": "2",
+              "author": "User 2 (@user-2)",
+              "content": "Awesome video.",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-1"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-3"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-4"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-5"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            },
+            {
+              "id": "3",
+              "author": "User 3 (@user-3)",
+              "content": "I am the 3rd!",
+              "stats": {
+                "rating": {
+                  "likes": [],
+                  "dislikes": []
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "video-2",
+        "name": "Video 2",
+        "duration": "3:45",
+        "props": {
+          "video": {
+            "url": "https://www.youtube.com/watch?v=2",
+            "thumbnail": "https://i.ytimg.com/vi/2/hqdefault.jpg",
+            "quality": [
+              "720p",
+              "480p",
+              "360p",
+              "240p",
+              "144p"
+            ]
+          },
+          "audio": {
+            "codec": "AAC",
+            "bitrate": "128kbps"
+          }
+        },
+        "stats": {
+          "views": [
+            {
+              "user": {
+                "id": "user-1"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "11-117"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "30-67"
+            }
+          ],
+          "rating": {
+            "likes": [
+              {
+                "user": {
+                  "id": "user-1"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-2"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-3"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              }
+            ],
+            "dislikes": []
+          },
+          "comments": [
+            {
+              "id": "1",
+              "author": "User 3 (@user-3)",
+              "content": "I am the 1st!",
+              "stats": {
+                "rating": {
+                  "likes": [],
+                  "dislikes": []
+                }
+              }
+            },
+            {
+              "id": "2",
+              "author": "User 1 (@user-1)",
+              "content": "Awesome video.",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-2"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": [
+                    {
+                      "user": {
+                        "id": "user-3"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-4"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "3",
+              "author": "User 2 (@user-2)",
+              "content": "I am the 3rd!",
+              "stats": {
+                "rating": {
+                  "likes": [],
+                  "dislikes": [
+                    {
+                      "user": {
+                        "id": "user-1"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "4",
+              "author": "User 6 (@user-6)",
+              "content": "Nice. Go to facebook.com and buy it.",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-2"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-3"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "video-3",
+        "name": "Video 3",
+        "duration": "9:45",
+        "props": {
+          "video": {
+            "url": "https://www.youtube.com/watch?v=3",
+            "thumbnail": "https://i.ytimg.com/vi/2/hqdefault.jpg",
+            "quality": [
+              "480p",
+              "360p",
+              "240p",
+              "144p"
+            ]
+          },
+          "audio": {
+            "codec": "AAC",
+            "bitrate": "128kbps"
+          }
+        },
+        "stats": {
+          "views": [
+            {
+              "user": {
+                "id": "user-1"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "11-117"
+            },
+            {
+              "user": {
+                "id": "user-2"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "45"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "30"
+            },
+            {
+              "user": {
+                "id": "user-5"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "80"
+            },
+            {
+              "user": {
+                "id": "user-4"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "540"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "30-67"
+            }
+          ],
+          "rating": {
+            "likes": [
+              {
+                "user": {
+                  "id": "user-1"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-2"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-3"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-4"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-5"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              }
+            ],
+            "dislikes": []
+          },
+          "comments": [
+            {
+              "id": "1",
+              "author": "User 2 (@user-2)",
+              "content": "I like it!",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-1"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-4"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-3"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            },
+            {
+              "id": "3",
+              "author": "User 4 (@user-4)",
+              "content": "I watched almost full video.",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-1"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-3"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "video-4",
+        "name": "Video 4",
+        "duration": "5:45",
+        "props": {
+          "video": {
+            "url": "https://www.youtube.com/watch?v=4",
+            "thumbnail": "https://i.ytimg.com/vi/2/hqdefault.jpg",
+            "quality": [
+              "720p",
+              "480p",
+              "360p",
+              "240p",
+              "144p"
+            ]
+          },
+          "audio": {
+            "codec": "AAC",
+            "bitrate": "128kbps"
+          }
+        },
+        "stats": {
+          "views": [
+            {
+              "user": {
+                "id": "user-1"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "11-117"
+            },
+            {
+              "user": {
+                "id": "user-2"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "45"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "30"
+            },
+            {
+              "user": {
+                "id": "user-5"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "80"
+            },
+            {
+              "user": {
+                "id": "user-4"
+              },
+              "timestamp": "2018-01-01T02:00:00Z",
+              "window": "540"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "30-67"
+            },
+            {
+              "user": {
+                "id": "user-9"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "5"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "25"
+            },
+            {
+              "user": {
+                "id": "user-3"
+              },
+              "timestamp": "2018-01-01T04:00:00Z",
+              "window": "25-330"
+            }
+          ],
+          "rating": {
+            "likes": [
+              {
+                "user": {
+                  "id": "user-1"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-2"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-3"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-4"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              },
+              {
+                "user": {
+                  "id": "user-5"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              }
+            ],
+            "dislikes": [
+              {
+                "user": {
+                  "id": "user-9"
+                },
+                "timestamp": "2018-01-01T00:00:00Z"
+              }
+            ]
+          },
+          "comments": [
+            {
+              "id": "1",
+              "author": "User 2 (@user-2)",
+              "content": "I like it!",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-1"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-4"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    },
+                    {
+                      "user": {
+                        "id": "user-3"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            },
+            {
+              "id": "3",
+              "author": "User 9 (@user-9)",
+              "content": "I don't like it video.",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-9"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": [
+                    {
+                      "user": {
+                        "id": "user-1"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "4",
+              "author": "User 6 (@user-6)",
+              "content": "Nice. See facebook.com to buy it.",
+              "stats": {
+                "rating": {
+                  "likes": [],
+                  "dislikes": []
+                }
+              }
+            },
+            {
+              "id": "5",
+              "author": "User 1 (@user-1)",
+              "content": "Visit my blog at https://myblog.org",
+              "stats": {
+                "rating": {
+                  "likes": [
+                    {
+                      "user": {
+                        "id": "user-2"
+                      },
+                      "timestamp": "2018-01-01T00:00:00Z"
+                    }
+                  ],
+                  "dislikes": []
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

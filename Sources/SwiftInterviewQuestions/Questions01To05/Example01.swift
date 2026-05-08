@@ -1,6 +1,6 @@
 import Foundation
 
-enum Question01 {
+enum Question01: InterviewQuestion {
     static func run() {
         do {
             let records = try loadBankRecords()

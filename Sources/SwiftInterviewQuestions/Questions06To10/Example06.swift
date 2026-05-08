@@ -1,4 +1,4 @@
-enum Question06 {
+enum Question06: InterviewQuestion {
     static func run() {
         let coins = 400
         let menu = [

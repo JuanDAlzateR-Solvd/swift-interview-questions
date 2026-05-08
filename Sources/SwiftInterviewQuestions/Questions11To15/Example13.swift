@@ -1,4 +1,4 @@
-enum Question13 {
+enum Question13: InterviewQuestion {
     static func run() {
     
     let monetaryColumns = ["adDeliveryPennies", "paymentPennies"];

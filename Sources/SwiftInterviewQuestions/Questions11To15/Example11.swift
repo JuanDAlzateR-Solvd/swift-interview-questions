@@ -1,4 +1,4 @@
-enum Question11 {
+enum Question11: InterviewQuestion {
     static func run() {
   
         let map = ["a": 1, "b": 2, "c": 1, "d": 3, "e": 2, "f": 2]

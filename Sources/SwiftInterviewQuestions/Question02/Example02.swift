@@ -1,4 +1,4 @@
-enum Question02 {
+enum Question02: InterviewQuestion {
     static func run() {
         print("This is Question 02 - Example No adjacent rectangles.")        
 

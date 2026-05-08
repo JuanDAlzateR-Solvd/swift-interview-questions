@@ -1,4 +1,4 @@
-enum Question12 {
+enum Question12: InterviewQuestion {
     static func run() {
   
         let array = ["a", "b", "c", "d", "e", "f"]

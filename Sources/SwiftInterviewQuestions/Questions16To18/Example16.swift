@@ -1,4 +1,4 @@
-enum Question16 {
+enum Question16: InterviewQuestion {
     static func run() {
         let input = "aaaabbcaaa"
         print("input: \(input)")

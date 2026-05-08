@@ -1,4 +1,4 @@
-enum Question04 {
+enum Question04: InterviewQuestion {
     static func run() {
         let input = "A man, a plan, a canal: Panama"
         let result = isPalindrome(input) 
