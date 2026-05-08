@@ -1,4 +1,4 @@
-enum Question18 {
+enum Question18: InterviewQuestion {
     static func run() {        
         let game = Game()
         while game.isOngoing() {

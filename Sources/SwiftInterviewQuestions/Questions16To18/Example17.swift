@@ -1,4 +1,4 @@
-enum Question17 {
+enum Question17: InterviewQuestion {
     static func run() {        
         let familyTree = FamilyTree()
         let input = [

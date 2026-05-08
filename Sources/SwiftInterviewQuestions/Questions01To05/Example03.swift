@@ -1,4 +1,4 @@
-enum Question03 {
+enum Question03: InterviewQuestion {
     static func run() {
         let input = "start2[b3[cd]middle5[f]]end"
         print("EncodedString: \(input)")

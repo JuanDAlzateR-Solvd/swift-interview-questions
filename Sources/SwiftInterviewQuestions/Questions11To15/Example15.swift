@@ -1,6 +1,6 @@
 import Foundation
 
-enum Question15 {
+enum Question15: InterviewQuestion {
     static func run() {
         do {
             print("--- P1 ---")
