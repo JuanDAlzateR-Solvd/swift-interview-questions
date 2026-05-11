@@ -9,6 +9,9 @@ struct Interview: ParsableCommand {
     @Argument(help: "The name of the question to run (e.g., Question04v2)")
     var questionName: String
 
+    // Run with: swift run Interview + QuestionName
+    // Example: `swift run Interview Question04v2`
+
     func run() throws {
         // Find the question in the registry
         guard let questionType = QuestionRegistry.all[questionName] else {

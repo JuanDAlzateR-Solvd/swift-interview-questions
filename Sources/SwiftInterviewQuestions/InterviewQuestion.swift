@@ -17,6 +17,7 @@ struct QuestionRegistry {
         "Question05": Question05.self,
         "Question06": Question06.self,
         "Question07": Question07.self,
+        "Question08": Question08.self,
         "Question09": Question09.self,
         "Question10": Question10.self,
         "Question11": Question11.self,
@@ -28,6 +29,7 @@ struct QuestionRegistry {
         "Question17": Question17.self,
         "Question18": Question18.self,
 
+        "Question03v4": Question03v4.self,
         "Question04v2": Question04v2.self,
          // Add new questions here
     ]
