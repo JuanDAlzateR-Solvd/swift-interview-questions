@@ -49,7 +49,7 @@ enum Question06v4: InterviewQuestion {
 
     }
 
-    func calculate(item: Item, change: Int) -> [Combination] {
+    static func calculate(item: Item, change: Int) -> [Combination] {
         let price = item.price
         let n = change / price
         var newCombinations: [Combination] = []

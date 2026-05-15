@@ -42,6 +42,6 @@ enum Question16: InterviewQuestion {
         } else {
             return "\(number)[\(input)]"
         }
-     }
+    }
     
 }
