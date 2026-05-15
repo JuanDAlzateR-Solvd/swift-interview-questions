@@ -1,6 +1,8 @@
 enum Question06v4: InterviewQuestion {
 
     //Solution from interview
+    //This is what I came up with during the interview. 
+    //I'll leave the code as it is, Question06v5 is the improved version of this code.
 
     static func run() {
         let coins = 400
