@@ -12,7 +12,6 @@ enum Question06v3: InterviewQuestion {
    
         var i=0
 
-
         while let node = map[[i,0,0]], node.change >= menu[0].price {
              expandMap(map: &map, menu: menu)
              i += 1
@@ -49,22 +48,6 @@ enum Question06v3: InterviewQuestion {
             self.id = id
             self.name = name
             self.price = price
-        }
-    }
-
-    struct Coodinate: Hashable {
-        let array: [Int]
-        let change: Int
-        let numberOfItems: Int
-
-        init(array: [Int] = [], change: Int = 0) {
-            if array.isEmpty {
-                self.array = Array(repeating: 0, count: 3)
-            } else {
-                self.array = array
-            }          
-            self.change = change
-            self.numberOfItems = array.reduce(0, +)
         }
     }
 
