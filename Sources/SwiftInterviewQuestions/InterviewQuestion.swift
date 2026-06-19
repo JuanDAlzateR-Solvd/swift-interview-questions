@@ -30,7 +30,9 @@ struct QuestionRegistry {
         "Question18": Question18.self,
 
         "Question03v4": Question03v4.self,
+        "Question03v5": Question03v5.self,
         "Question04v2": Question04v2.self,
+        "Question04v3": Question04v3.self,
         "Question05v2": Question05v2.self,
         "Question06v2": Question06v2.self,
         "Question06v3": Question06v3.self,
